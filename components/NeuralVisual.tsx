@@ -257,7 +257,7 @@ export function NeuralVisual() {
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a8a5c" strokeWidth="2.5" strokeLinecap="round"><polyline points="4 15 8 9 12 12 16 6 20 10"/></svg>
         </div>
         <div>
-          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 700, color: "#1a1a1a" }}>Day <span style={{ color: "#1a8a5c" }}>127</span></div>
+          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 700, color: "#1a1a1a" }}>Day <span style={{ color: "#1a8a5c" }}>0</span></div>
           <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12.5, color: "#888" }}>Many streams, one unified process</div>
         </div>
       </div>
