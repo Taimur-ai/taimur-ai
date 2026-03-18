@@ -6,21 +6,19 @@ export function SubscribeSection() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const handleSubscribe = async () => {
-    if (!email.trim() || !email.includes("@")) return;
+    if (!email.trim() || !email.includes("@") || status === "sending") return;
     setStatus("sending");
 
     try {
-      const res = await fetch("https://buttondown.com/api/emails/embed-subscribe/taimur", {
+      await fetch("https://buttondown.com/api/emails/embed-subscribe/taimur", {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({ email: email.trim() }).toString(),
+        body: new URLSearchParams({ email: email.trim(), tag: "website" }).toString(),
       });
-
-      // Buttondown returns a redirect on success, so any non-error response is good
       setStatus("sent");
       setEmail("");
     } catch {
-      // fetch will throw on redirect which is actually success for Buttondown
       setStatus("sent");
       setEmail("");
     }
@@ -32,13 +30,25 @@ export function SubscribeSection() {
 
         {status === "sent" ? (
           <>
-            <div style={{ fontSize: 40, marginBottom: 12 }}>&#10003;</div>
-            <h2 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", fontWeight: 800, color: "#fff", margin: "0 0 12px", letterSpacing: "-0.02em" }}>
-              You&apos;re in!
+            <div style={{ fontSize: 48, marginBottom: 16 }}>&#x2728;</div>
+            <h2 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.4rem)", fontWeight: 800, color: "#fff", margin: "0 0 16px", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
+              Welcome to the journey
             </h2>
-            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: "rgba(255,255,255,0.8)", lineHeight: 1.7, maxWidth: 420, margin: "0 auto" }}>
-              Check your email to confirm your subscription. Every new entry will land straight in your inbox.
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: "rgba(255,255,255,0.85)", lineHeight: 1.75, maxWidth: 460, margin: "0 auto 8px" }}>
+              Thank you for embarking on the journey to perfection. Together, we&apos;ll decode the world of AI and build a better finance function — one day at a time.
             </p>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, maxWidth: 400, margin: "0 auto 24px" }}>
+              Check your inbox for a confirmation email. The first dispatch is already on its way.
+            </p>
+            <button
+              onClick={() => setStatus("idle")}
+              style={{
+                background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.3)",
+                borderRadius: 10, padding: "10px 22px",
+                fontFamily: "'DM Sans', sans-serif", fontSize: 13,
+                fontWeight: 600, color: "#fff", cursor: "pointer",
+              }}
+            >Invite someone else</button>
           </>
         ) : (
           <>
@@ -70,16 +80,15 @@ export function SubscribeSection() {
               />
               <button
                 onClick={handleSubscribe}
-                disabled={status === "sending" || !email.trim()}
                 style={{
                   background: "#fff", border: "none", borderRadius: 12,
                   padding: "14px 28px", fontFamily: "'DM Sans', sans-serif",
                   fontSize: 14, color: "#1a8a5c", fontWeight: 700,
-                  cursor: "pointer",
-                  opacity: (status === "sending" || !email.trim()) ? 0.6 : 1,
+                  cursor: status === "sending" ? "wait" : "pointer",
+                  opacity: status === "sending" ? 0.6 : 1,
                 }}
               >
-                {status === "sending" ? "..." : "Subscribe"}
+                {status === "sending" ? "Joining..." : "Subscribe"}
               </button>
             </div>
           </>
