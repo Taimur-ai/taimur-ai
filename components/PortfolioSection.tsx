@@ -10,7 +10,7 @@ export function PortfolioSection() {
         </div>
         <h2 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: "clamp(2rem, 4.5vw, 3.2rem)", fontWeight: 800, color: "#1a1a1a", margin: "0 0 14px", letterSpacing: "-0.02em" }}>Results That Speak</h2>
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: "#888", maxWidth: 560, margin: "0 auto", lineHeight: 1.65 }}>
-          Real projects where AI transformed traditional finance workflows into something faster, smarter, and more accurate.
+          Real-world AI experiments in traditional finance workflows — currently in testing. Follow along as the results come in.
         </p>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
@@ -22,9 +22,9 @@ export function PortfolioSection() {
                 <div style={{ width: 40, height: 40, borderRadius: 12, background: "#edf7f1", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>{p.icon}</div>
               </div>
               <h3 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: 20, fontWeight: 700, color: "#1a1a1a", margin: "0 0 20px", lineHeight: 1.25 }}>{p.title}</h3>
-              <div style={{ marginBottom: 20 }}>
-                <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: 40, fontWeight: 800, color: "#1a8a5c", lineHeight: 1, letterSpacing: "-0.02em" }}>{p.metric}</span>
-                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#888", marginLeft: 10, fontWeight: 500 }}>{p.metricLabel}</span>
+              <div style={{ marginBottom: 20, display: "inline-flex", alignItems: "center", gap: 8, background: "#edf7f1", borderRadius: 10, padding: "8px 16px", alignSelf: "flex-start" }}>
+                <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#1a8a5c", animation: "livePulse 2s ease-in-out infinite" }} />
+                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 700, color: "#1a8a5c", letterSpacing: "0.04em" }}>Results Coming Soon</span>
               </div>
               <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14.5, color: "#777", lineHeight: 1.7, margin: "0 0 24px", flex: 1 }}>{p.desc}</p>
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -34,7 +34,6 @@ export function PortfolioSection() {
               </div>
             </div>
           );
-          // Link to related journey entry if available
           return p.linkedEntry ? (
             <Link key={i} href={`/journey/${p.linkedEntry}`} style={{ textDecoration: "none" }}>{inner}</Link>
           ) : (
@@ -42,6 +41,9 @@ export function PortfolioSection() {
           );
         })}
       </div>
+      <style>{`
+        @keyframes livePulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
+      `}</style>
     </section>
   );
 }
