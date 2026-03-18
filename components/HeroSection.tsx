@@ -2,6 +2,82 @@
 import { useState, useEffect } from "react";
 import { NeuralVisual } from "./NeuralVisual";
 
+function HoverCard({ card, index }: { card: any; index: number }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        flex: "1 1 160px", padding: "18px 20px",
+        background: hovered ? card.bg : "#fff",
+        borderRadius: 14,
+        border: `1.5px solid ${hovered ? card.color + "35" : "#f0f0ec"}`,
+        cursor: "default",
+        transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+        position: "relative", overflow: "hidden",
+        boxShadow: hovered ? `0 8px 28px ${card.color}12` : "0 2px 8px rgba(0,0,0,0.03)",
+        transform: hovered ? "translateY(-4px)" : "translateY(0)",
+      }}
+    >
+      <div style={{
+        position: "absolute", top: 10, right: 10,
+        width: 44, height: 44, borderRadius: 12,
+        background: hovered ? card.bg : "transparent",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        opacity: hovered ? 1 : 0,
+        transform: hovered ? "scale(1) rotate(0deg)" : "scale(0.3) rotate(-20deg)",
+        transition: "all 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
+      }}>
+        {index === 0 && (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a8a5c" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="5" y="4" width="14" height="10" rx="3"/><circle cx="9" cy="9" r="1.2" fill="#1a8a5c"/><circle cx="15" cy="9" r="1.2" fill="#1a8a5c"/>
+            <path d="M9 14v3M15 14v3M7 17h10"/><path d="M19 7l2-1M5 7l-2-1"/><path d="M12 4v-2"/>
+            <circle cx="20" cy="17" r="2.5" fill="none" strokeWidth="1.4"/><path d="M20 15.5v1.5h1.2"/>
+          </svg>
+        )}
+        {index === 1 && (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="1.4" strokeLinecap="round">
+            <circle cx="4" cy="5" r="1.8" fill="#2563eb" opacity={hovered ? 0.15 : 0.5} style={{ transition: "all 0.8s", transform: hovered ? "translate(7px, 7px)" : "none" }}/>
+            <circle cx="20" cy="4" r="1.5" fill="#2563eb" opacity={hovered ? 0.15 : 0.45} style={{ transition: "all 0.8s ease 0.1s", transform: hovered ? "translate(-9px, 8px)" : "none" }}/>
+            <circle cx="6" cy="18" r="1.3" fill="#2563eb" opacity={hovered ? 0.15 : 0.4} style={{ transition: "all 0.8s ease 0.15s", transform: hovered ? "translate(5px, -6px)" : "none" }}/>
+            <circle cx="19" cy="19" r="1.6" fill="#2563eb" opacity={hovered ? 0.15 : 0.45} style={{ transition: "all 0.8s ease 0.05s", transform: hovered ? "translate(-8px, -7px)" : "none" }}/>
+            <circle cx="14" cy="6" r="1.2" fill="#2563eb" opacity={hovered ? 0.15 : 0.35} style={{ transition: "all 0.8s ease 0.2s", transform: hovered ? "translate(-3px, 6px)" : "none" }}/>
+            <circle cx="3" cy="12" r="1.4" fill="#2563eb" opacity={hovered ? 0.15 : 0.4} style={{ transition: "all 0.8s ease 0.12s", transform: hovered ? "translate(8px, 0px)" : "none" }}/>
+            <circle cx="11" cy="12" r={hovered ? 3.5 : 1.8} fill="#2563eb" opacity={hovered ? 0.7 : 0.25} style={{ transition: "all 0.8s cubic-bezier(0.22, 1, 0.36, 1)" }}/>
+          </svg>
+        )}
+        {index === 2 && (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d97706" strokeWidth="1.4" strokeLinecap="round">
+            <rect x="2" y={hovered ? 16 : 2} width="5" height="4" rx="1" fill="#d97706" opacity={0.2} style={{ transition: "all 0.7s cubic-bezier(0.22, 1, 0.36, 1)" }}/>
+            <rect x="9" y={hovered ? 16 : 8} width="5" height="4" rx="1" fill="#d97706" opacity={0.25} style={{ transition: "all 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s" }}/>
+            <rect x="16" y={hovered ? 16 : 5} width="5" height="4" rx="1" fill="#d97706" opacity={0.3} style={{ transition: "all 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.05s" }}/>
+            <path d="M4 22h16" stroke="#d97706" strokeWidth={1.5} opacity={hovered ? 0.5 : 0.15} style={{ transition: "all 0.5s" }}/>
+          </svg>
+        )}
+      </div>
+
+      <div style={{
+        fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: 15,
+        fontWeight: 700, color: hovered ? card.color : "#1a1a1a",
+        marginBottom: 4, paddingRight: 48,
+        transition: "color 0.3s",
+      }}>{card.title}</div>
+
+      <div style={{
+        fontFamily: "'DM Sans', sans-serif", fontSize: 12.5, color: "#777",
+        lineHeight: 1.55,
+        maxHeight: hovered ? 60 : 0,
+        opacity: hovered ? 1 : 0,
+        marginTop: hovered ? 6 : 0,
+        overflow: "hidden",
+        transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+      }}>{card.desc}</div>
+    </div>
+  );
+}
+
 export function HeroSection() {
   const [vis, setVis] = useState(false);
   useEffect(() => { setTimeout(() => setVis(true), 250); }, []);
@@ -19,7 +95,6 @@ export function HeroSection() {
             <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12.5, fontWeight: 700, color: "#1a8a5c", letterSpacing: "0.12em", textTransform: "uppercase" }}>Live Journey</span>
           </div>
 
-          {/* H1 — primary SEO heading for homepage */}
           <h1 style={{
             opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(40px)", transition: t(0.35),
             fontFamily: "'Bricolage Grotesque', 'DM Sans', sans-serif",
@@ -30,14 +105,13 @@ export function HeroSection() {
             <span style={{ color: "#1a8a5c" }}>of Finance with AI</span>
           </h1>
 
-          {/* Tagline */}
           <p style={{
             opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(30px)", transition: t(0.45),
             fontFamily: "'DM Sans', sans-serif", fontSize: 17, fontWeight: 500,
             color: "#1a1a1a", maxWidth: 480, lineHeight: 1.5, margin: "0 0 8px",
             borderLeft: "3px solid #1a8a5c", paddingLeft: 18,
           }}>
-            The finance world changed overnight. I'm mapping the way forward.
+            Finance is evolving every single day — I&apos;m mapping every shift so you stay ahead of the curve.
           </p>
 
           <p style={{
@@ -45,8 +119,7 @@ export function HeroSection() {
             fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(1rem, 1.8vw, 1.1rem)",
             color: "#666", maxWidth: 460, lineHeight: 1.7, margin: "0 0 36px",
           }}>
-            ACCA-qualified accountant &amp; finance manager documenting every day of
-            integrating AI into modern finance — one insight at a time.
+            Qualified, experienced finance manager on a mission to master AI and build intelligent systems that elevate businesses to new heights. Documenting and sharing a never-ending journey to perfection — so you can follow along.
           </p>
 
           <div style={{ opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(20px)", transition: t(0.6), display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 56 }}>
@@ -62,25 +135,17 @@ export function HeroSection() {
             }}>View Portfolio</a>
           </div>
 
-          {/* Stats */}
-          <div style={{ opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(20px)", transition: t(0.75), display: "flex", gap: 40, flexWrap: "wrap" }}>
+          <div style={{ opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(20px)", transition: t(0.75), display: "flex", gap: 16, flexWrap: "wrap" }}>
             {[
-              { icon: "📈", value: "365", label: "DAY JOURNEY" },
-              { icon: "🤖", value: "50+", label: "AI TOOLS TESTED" },
-              { icon: "⚡", value: "∞", label: "POSSIBILITIES" },
-            ].map((s, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontSize: 18 }} aria-hidden="true">{s.icon}</span>
-                <div>
-                  <div style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: 22, fontWeight: 800, color: "#1a1a1a", lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10.5, fontWeight: 600, color: "#999", letterSpacing: "0.1em", textTransform: "uppercase" }}>{s.label}</div>
-                </div>
-              </div>
+              { title: "Finance AI Architect", desc: "Designing intelligent systems that transform how businesses handle money", color: "#1a8a5c", bg: "#edf7f1" },
+              { title: "Continuous Improvement", desc: "Messy data compiled into clarity — every single day", color: "#2563eb", bg: "#eff4ff" },
+              { title: "More Strategic, Less Transactional", desc: "Automating the mundane so finance teams focus on what matters", color: "#d97706", bg: "#fef9ec" },
+            ].map((card, i) => (
+              <HoverCard key={i} card={card} index={i} />
             ))}
           </div>
         </div>
 
-        {/* Animation */}
         <div style={{ opacity: vis ? 1 : 0, transform: vis ? "none" : "translateX(60px) scale(0.95)", transition: t(0.5) }}>
           <NeuralVisual />
         </div>
