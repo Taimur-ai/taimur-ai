@@ -5,26 +5,27 @@
 
 export type JourneyEntry = {
   day: number;
-  slug: string;              // URL-friendly: /journey/automating-gl-reconciliation-with-gpt4
+  slug: string;
   date: string;
-  title: string;             // H1 — keyword-rich
-  metaTitle: string;         // <title> tag — max 60 chars
-  metaDescription: string;   // meta description — max 155 chars
+  title: string;
+  metaTitle: string;
+  metaDescription: string;
   category: "reflection" | "tool-review" | "case-study" | "video";
-  phase: "foundation" | "data-python" | "ml-finance" | "ai-agents";
-  summary: string;           // First paragraph / excerpt
-  content: string;           // Full article body (markdown-style)
+  phase: "ai-purchase" | "ai-invoicing" | "ai-reporting" | "ai-finance-strategy" | "ai-finance-function";
+  summary: string;
+  content: string;
   tags: string[];
-  keywords: string[];        // Target SEO keywords
-  readTime: number;          // minutes
+  keywords: string[];
+  readTime: number;
 };
 
 export const PHASES = [
   { key: "all", label: "All Days", range: "", description: "Every entry from Day 1 to today" },
-  { key: "foundation", label: "Foundation", range: "Days 1–30", description: "Building the basics of AI literacy for finance professionals" },
-  { key: "data-python", label: "Data & Python", range: "Days 31–60", description: "Learning Python, pandas, and data manipulation for accounting" },
-  { key: "ml-finance", label: "ML for Finance", range: "Days 61–90", description: "Machine learning models applied to real financial workflows" },
-  { key: "ai-agents", label: "AI Agents", range: "Days 91+", description: "Autonomous AI agents transforming finance operations" },
+  { key: "ai-purchase", label: "AI Purchase System", range: "", description: "Building AI-powered procurement and purchase order automation" },
+  { key: "ai-invoicing", label: "AI Invoicing System", range: "", description: "Automating invoice processing, matching, and payment workflows" },
+  { key: "ai-reporting", label: "AI Reporting System", range: "", description: "AI-generated financial reports, variance analysis, and dashboards" },
+  { key: "ai-finance-strategy", label: "AI Finance Strategy", range: "", description: "Using AI for forecasting, planning, and strategic decision-making" },
+  { key: "ai-finance-function", label: "AI Finance Function", range: "", description: "Transforming the entire finance function with AI-powered systems" },
 ];
 
 export const CATEGORY_CONFIG = {
@@ -43,7 +44,7 @@ export const JOURNEY_DATA: JourneyEntry[] = [
     metaTitle: "Automating GL Reconciliation with GPT-4 | Day 127",
     metaDescription: "How I used GPT-4 to match and reconcile general ledger entries, reducing manual review time by 60%. Step-by-step walkthrough for accountants.",
     category: "video",
-    phase: "ai-agents",
+    phase: "ai-invoicing",
     summary: "Explored using large language models to match and reconcile general ledger entries, reducing manual review time by 60%.",
     content: `Today I tackled one of the most tedious tasks in accounting — GL reconciliation. Every month-end, finance teams spend hours manually matching entries across sub-ledgers. I wanted to see if GPT-4 could handle it.
 
@@ -51,14 +52,14 @@ export const JOURNEY_DATA: JourneyEntry[] = [
 I exported 3 months of GL data (2,400 entries) and corresponding bank statements. The challenge: entries don't match 1:1. You get partial matches, timing differences, and descriptions that vary wildly.
 
 ## What GPT-4 Did Well
-- Pattern matching across different description formats (e.g., "AMZN*123" → "Amazon Web Services")
+- Pattern matching across different description formats
 - Identifying timing differences and suggesting which entries to accrue
 - Flagging genuine discrepancies that needed human review
 
 ## The Results
-- **60% reduction** in manual review time
-- **94% accuracy** on first-pass matching
-- **12 genuine discrepancies** caught that I might have missed manually
+- 60% reduction in manual review time
+- 94% accuracy on first-pass matching
+- 12 genuine discrepancies caught that I might have missed manually
 
 ## Key Takeaway
 AI isn't replacing the reconciliation process — it's handling the mechanical matching so I can focus on investigating the exceptions. That's the real value.`,
@@ -74,7 +75,7 @@ AI isn't replacing the reconciliation process — it's handling the mechanical m
     metaTitle: "Predictive Cash Flow Models with Python | Day 126",
     metaDescription: "How I built a Python cash flow forecasting model using historical AP/AR data and seasonal patterns. 94% forecast accuracy achieved.",
     category: "case-study",
-    phase: "ml-finance",
+    phase: "ai-finance-strategy",
     summary: "Created a Python-based cash flow forecasting model using historical AP/AR data and seasonal patterns.",
     content: `Cash flow forecasting has always been part art, part science. Today I built a model that tips the balance firmly toward science.
 
@@ -89,12 +90,12 @@ Using Python with pandas and scikit-learn, I built a model that:
 4. Predicts weekly cash positions 4 weeks ahead
 
 ## Results
-- **94% forecast accuracy** (up from ~80%)
+- 94% forecast accuracy (up from ~80%)
 - Predictions available in minutes vs. half a day
 - Model improves automatically as new data flows in
 
 ## What I Learned
-The hardest part wasn't the Python — it was cleaning the data. Real-world AP/AR data is messy. Duplicate entries, inconsistent vendor names, missing payment dates. Data preparation took 70% of the project time.`,
+The hardest part wasn't the Python — it was cleaning the data. Real-world AP/AR data is messy. Data preparation took 70% of the project time.`,
     tags: ["Python", "Forecasting", "Cash Flow", "scikit-learn"],
     keywords: ["cash flow forecasting python", "predictive cash flow model", "python accounting automation", "scikit-learn finance"],
     readTime: 6,
@@ -107,7 +108,7 @@ The hardest part wasn't the Python — it was cleaning the data. Real-world AP/A
     metaTitle: "When AI Gets Financial Numbers Wrong | Day 125",
     metaDescription: "I tested 3 LLMs on financial calculations. The results reveal why accountants must stay in the loop. A reality check on AI accuracy.",
     category: "reflection",
-    phase: "ml-finance",
+    phase: "ai-reporting",
     summary: "Today I tested 3 different LLMs on financial calculations. The results were eye-opening — and a reminder that human oversight isn't going anywhere.",
     content: `I ran an experiment today that every accountant considering AI needs to see.
 
@@ -115,14 +116,12 @@ The hardest part wasn't the Python — it was cleaning the data. Real-world AP/A
 I gave three leading LLMs (GPT-4, Claude, and Gemini) the same set of 20 financial calculations — depreciation schedules, tax computations, lease accounting under IFRS 16, and ratio analysis.
 
 ## The Results (Honest)
-- **Simple arithmetic**: All three scored 100%. No surprises.
-- **Multi-step calculations**: Accuracy dropped to 85-90%. Small rounding errors compounded.
-- **Judgment-based items**: This is where it got interesting. Lease classification, impairment triggers, going concern assessments — the models disagreed with each other and sometimes with the correct answer.
+- Simple arithmetic: All three scored 100%. No surprises.
+- Multi-step calculations: Accuracy dropped to 85-90%. Small rounding errors compounded.
+- Judgment-based items: This is where it got interesting. The models disagreed with each other and sometimes with the correct answer.
 
 ## The Takeaway
-AI is extraordinary at pattern recognition and data processing. But financial reporting requires professional judgment that these models can approximate but not replace. The winning combination is clear: let AI handle the computational heavy lifting, but keep a qualified human making the judgment calls.
-
-This isn't a weakness of AI. It's a feature of good finance — we exist because numbers need interpretation, not just calculation.`,
+AI is extraordinary at pattern recognition and data processing. But financial reporting requires professional judgment that these models can approximate but not replace. The winning combination is clear: let AI handle the computational heavy lifting, but keep a qualified human making the judgment calls.`,
     tags: ["Accuracy", "LLM Testing", "Risk", "Professional Judgment"],
     keywords: ["ai accuracy accounting", "llm financial calculations", "ai limitations finance", "human oversight ai accounting"],
     readTime: 4,
@@ -135,7 +134,7 @@ This isn't a weakness of AI. It's a feature of good finance — we exist because
     metaTitle: "Python for Finance: Pandas Basics for Accountants | Day 98",
     metaDescription: "An accountant's guide to learning Python for finance. How I used pandas to clean and categorise transaction data automatically.",
     category: "tool-review",
-    phase: "data-python",
+    phase: "ai-finance-function",
     summary: "Started learning Python with a focus on pandas and financial data manipulation. Built my first script to clean and categorise transaction data automatically.",
     content: `If you told me a year ago I'd be writing Python scripts, I would have laughed. Today I wrote my first one that actually does something useful.
 
@@ -143,22 +142,12 @@ This isn't a weakness of AI. It's a feature of good finance — we exist because
 Excel has been my home for 11 years. But I've hit its ceiling. When you're working with 500,000+ transaction rows, Excel crawls. Python with pandas handles it in seconds.
 
 ## What I Built Today
-A script that:
-1. Reads a CSV bank statement export
-2. Cleans inconsistent date formats
-3. Categorises transactions based on description patterns
-4. Flags potential duplicates
-5. Exports a clean, categorised dataset
+A script that reads a CSV bank statement export, cleans inconsistent date formats, categorises transactions based on description patterns, flags potential duplicates, and exports a clean categorised dataset.
 
 ## The Learning Curve (Honest)
-- **Hour 1-2**: Frustrating. Syntax errors everywhere.
-- **Hour 3-4**: Starting to click. The logic is similar to Excel formulas, just different syntax.
-- **Hour 5**: Built something that actually works. The dopamine hit was real.
-
-## Resources That Helped
-- "Python for Finance" by Yves Hilpisch — the bible
-- Kaggle's free Python course — hands-on and practical
-- ChatGPT as a coding tutor — game changer for debugging
+- Hour 1-2: Frustrating. Syntax errors everywhere.
+- Hour 3-4: Starting to click. The logic is similar to Excel formulas.
+- Hour 5: Built something that actually works.
 
 If you're an accountant on the fence about learning Python: start. It's not as hard as it looks, and the payoff is enormous.`,
     tags: ["Python", "Pandas", "Data Cleaning", "Getting Started"],
@@ -173,33 +162,25 @@ If you're an accountant on the fence about learning Python: start. It's not as h
     metaTitle: "AI-Assisted Month-End Close: 14 Hours Saved | Day 45",
     metaDescription: "Applied AI to a real month-end close — reconciliation, variance analysis, and management commentary. Total time saved: 14 hours. Here's exactly how.",
     category: "case-study",
-    phase: "foundation",
+    phase: "ai-reporting",
     summary: "Applied everything learned so far to a real month-end close. Used AI for reconciliation matching, variance analysis, and generating the management commentary. Total time saved: 14 hours.",
     content: `This is the entry I've been building toward. After 44 days of learning, today I put it all together on a real month-end close.
 
 ## What I Automated
-1. **Bank reconciliation matching** — AI matched 89% of entries automatically
-2. **Variance analysis** — Fed actuals vs. budget into Claude, got a first draft of variance explanations
-3. **Management commentary** — AI generated the narrative sections of the management pack
+1. Bank reconciliation matching — AI matched 89% of entries automatically
+2. Variance analysis — Fed actuals vs. budget into Claude, got a first draft of variance explanations
+3. Management commentary — AI generated the narrative sections of the management pack
 
-## Time Comparison
-| Task | Manual | AI-Assisted |
-|------|--------|-------------|
-| Reconciliation | 6 hours | 1.5 hours |
-| Variance analysis | 4 hours | 1 hour |
-| Commentary drafting | 5 hours | 1 hour |
-| Review & QA | 2 hours | 3 hours |
-| **Total** | **17 hours** | **6.5 hours** |
-
-Note the QA time went UP. That's intentional — I spent more time reviewing AI output. But the net saving is still 14 hours.
+## Time Saved
+Net saving of 14 hours on a single month-end. Note the QA time went UP — I spent more time reviewing AI output. But the net saving is still significant.
 
 ## What Didn't Work
 - AI struggled with one-off accruals that required knowledge of side agreements
-- The variance commentary was too generic on first pass — needed significant editing
+- The variance commentary was too generic on first pass
 - Reconciliation matching broke down on inter-company transactions
 
 ## The Verdict
-14 hours saved on a single month-end. Extrapolate that across 12 months and you're looking at 168 hours — over 4 working weeks — reclaimed for strategic work. This is real.`,
+14 hours saved on a single month-end. Extrapolate that across 12 months and you're looking at over 4 working weeks reclaimed for strategic work. This is real.`,
     tags: ["Month-End", "Real World", "Time Savings", "Reconciliation"],
     keywords: ["ai month-end close", "automate month-end accounting", "ai accounting time savings", "ai-assisted financial close"],
     readTime: 7,
@@ -212,30 +193,28 @@ Note the QA time went UP. That's intentional — I spent more time reviewing AI 
     metaTitle: "Day 1: An Accountant's AI Journey Begins | taimur.ai",
     metaDescription: "After 11 years in finance, I'm documenting every day of my transformation into an AI-powered finance leader. ACCA-qualified. No filters. No shortcuts.",
     category: "reflection",
-    phase: "foundation",
+    phase: "ai-finance-function",
     summary: "Today I made a decision that will change my career forever. After 11 years in finance — from big corporations to AI startups — I'm documenting every single day of my transformation. No filters. No shortcuts.",
-    content: `The finance world changed overnight. And I refuse to be left behind.
+    content: `Finance is evolving every single day. And I refuse to be left behind.
 
-After 11 years working in finance — from big corporations to lean startups building AI software — I've seen both sides. I've seen what traditional finance looks like, and I've seen what's coming. The gap between the two is terrifying and exciting in equal measure.
+After 11 years working in finance — from big corporations to lean startups building AI software — I've seen both sides. The gap between traditional finance and what's coming is terrifying and exciting in equal measure.
 
 ## Why I'm Doing This
-Every accountant I talk to has the same questions: "Should I be worried about AI?" "Where do I start?" "Is it really going to replace us?"
+Every accountant I talk to has the same questions: Should I be worried about AI? Where do I start? Is it really going to replace us?
 
 I don't have all the answers yet. But I'm going to find them — one day at a time, in public, with full transparency.
 
 ## What This Journal Will Be
-- **Daily entries** documenting what I learned, built, or tested
-- **Honest reviews** of AI tools for finance (what works, what doesn't)
-- **Real case studies** applying AI to actual accounting workflows
-- **Reflections** on the mindset shifts required to adapt
+- Daily entries documenting what I learned, built, or tested
+- Honest reviews of AI tools for finance
+- Real case studies applying AI to actual accounting workflows
+- Reflections on the mindset shifts required to adapt
 
 ## My Starting Point
 - ACCA-qualified, 11+ years in finance
 - Experience in both corporate accounting and AI startups
 - Comfortable with Excel, uncomfortable with Python (for now)
 - Curious, determined, and slightly terrified
-
-If you're in finance and wondering how AI will change your career — follow along. I'm figuring it out in real time, and I'm not holding anything back.
 
 The journey starts now.`,
     tags: ["Day 1", "Commitment", "New Chapter", "ACCA"],
@@ -262,15 +241,13 @@ export function getRelatedEntries(entry: JourneyEntry, limit = 3): JourneyEntry[
     .slice(0, limit);
 }
 
-// Portfolio data
+// Portfolio data — results coming soon
 export const PORTFOLIO_DATA = [
   {
     title: "Automated Month-End Close",
     category: "PROCESS AUTOMATION",
     icon: "⏱",
-    metric: "-40%",
-    metricLabel: "Close Time Reduced",
-    desc: "Implemented AI-powered journal entry automation and variance analysis, cutting the monthly close process from 10 days to 6.",
+    desc: "Testing AI-powered journal entry automation and variance analysis to drastically cut monthly close time. Early results show AI can match 89% of reconciliation entries automatically — full case study in progress.",
     tags: ["Python", "GPT-4", "Power Automate"],
     linkedEntry: "first-ai-assisted-month-end-close",
   },
@@ -278,9 +255,7 @@ export const PORTFOLIO_DATA = [
     title: "Predictive Cash Flow Forecasting",
     category: "FINANCIAL PLANNING",
     icon: "📈",
-    metric: "94%",
-    metricLabel: "Forecast Accuracy",
-    desc: "Built a machine learning model using 3 years of historical AP/AR data to predict weekly cash positions with high accuracy.",
+    desc: "Building a machine learning model using historical AP/AR data to predict weekly cash positions. AI can already identify seasonal patterns that manual analysis misses — currently refining accuracy.",
     tags: ["Python", "scikit-learn", "Tableau"],
     linkedEntry: "building-predictive-cash-flow-models-with-python",
   },
@@ -288,18 +263,14 @@ export const PORTFOLIO_DATA = [
     title: "Intelligent Expense Categorisation",
     category: "DATA PROCESSING",
     icon: "📊",
-    metric: "15K+",
-    metricLabel: "Transactions/Month",
-    desc: "Deployed an NLP-based system to automatically categorise expenses from bank feeds, reducing manual data entry by 85%.",
+    desc: "Developing an NLP-based system to automatically categorise thousands of transactions from bank feeds. AI shows potential to reduce manual data entry by up to 85% — testing in live environment.",
     tags: ["NLP", "OpenAI API", "Excel VBA"],
   },
   {
     title: "Board Report Generator",
     category: "REPORTING",
     icon: "📝",
-    metric: "3x",
-    metricLabel: "Faster Output",
-    desc: "Created prompt templates that generate board-ready financial narratives from raw data, transforming a 2-day task into a 4-hour workflow.",
+    desc: "Creating prompt templates that generate board-ready financial narratives from raw data. AI can already draft variance commentary and management summaries — currently benchmarking quality against manual output.",
     tags: ["Claude", "Power BI", "Word API"],
   },
 ];
@@ -318,10 +289,10 @@ export const TOOLS_DATA = [
 export const SITE = {
   name: "taimur.ai",
   title: "taimur.ai — An Accountant's Daily AI Transformation Journey",
-  description: "ACCA-qualified accountant & finance manager documenting every day of integrating AI into modern finance. Real tools, real case studies, real results.",
+  description: "Qualified, experienced finance manager on a mission to master AI and build intelligent systems that elevate businesses to new heights. Documenting a never-ending journey to perfection.",
   url: "https://taimur.ai",
   author: "Taimur G",
-  authorTitle: "ACCA-Qualified Accountant & Finance Manager",
+  authorTitle: "Qualified Finance Manager & AI Architect",
   socials: {
     youtube: "https://www.youtube.com/@Taimur_G1",
     tiktok: "https://www.tiktok.com/@taimur_g",
@@ -338,5 +309,9 @@ export const SITE = {
     "AI transformation journey",
     "ACCA AI",
     "future of accounting",
+    "AI finance architect",
+    "AI invoicing system",
+    "AI purchase system",
+    "AI reporting system",
   ],
 };
