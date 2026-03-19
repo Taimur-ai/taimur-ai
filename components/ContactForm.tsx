@@ -16,7 +16,7 @@ export function ContactForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: "YOUR_WEB3FORMS_KEY_HERE",
+          access_key: "63c672aa-777a-4919-9894-0e070f81300e",
           name: name.trim(),
           email: email.trim(),
           message: message.trim(),
@@ -51,7 +51,7 @@ export function ContactForm() {
         }}>Message sent!</h2>
         <p style={{
           fontFamily: "'DM Sans', sans-serif", fontSize: 15,
-          color: "#666", lineHeight: 1.6,
+          color: "#666", lineHeight: 1.6, maxWidth: 380, margin: "0 auto",
         }}>
           Thanks for reaching out. I&apos;ll get back to you as soon as I can.
         </p>
@@ -73,7 +73,6 @@ export function ContactForm() {
       border: "1px solid #f0f0ec",
       boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
     }}>
-      {/* Name */}
       <div style={{ marginBottom: 20 }}>
         <label style={{
           display: "block", fontFamily: "'DM Sans', sans-serif",
@@ -94,7 +93,6 @@ export function ContactForm() {
         />
       </div>
 
-      {/* Email */}
       <div style={{ marginBottom: 20 }}>
         <label style={{
           display: "block", fontFamily: "'DM Sans', sans-serif",
@@ -115,7 +113,6 @@ export function ContactForm() {
         />
       </div>
 
-      {/* Message */}
       <div style={{ marginBottom: 24 }}>
         <label style={{
           display: "block", fontFamily: "'DM Sans', sans-serif",
@@ -137,17 +134,15 @@ export function ContactForm() {
         />
       </div>
 
-      {/* Error */}
       {status === "error" && (
         <p style={{
           fontFamily: "'DM Sans', sans-serif", fontSize: 14,
           color: "#dc2626", margin: "0 0 16px",
         }}>
-          Something went wrong. Please try again or email me directly.
+          Something went wrong. Please try again.
         </p>
       )}
 
-      {/* Submit */}
       <button
         onClick={handleSubmit}
         style={{
