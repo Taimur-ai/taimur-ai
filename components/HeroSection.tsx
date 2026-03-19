@@ -108,18 +108,19 @@ export function HeroSection() {
           <p style={{
             opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(30px)", transition: t(0.45),
             fontFamily: "'DM Sans', sans-serif", fontSize: 17, fontWeight: 500,
-            color: "#1a1a1a", maxWidth: 480, lineHeight: 1.5, margin: "0 0 8px",
+            color: "#1a1a1a", maxWidth: 500, lineHeight: 1.55, margin: "0 0 12px",
             borderLeft: "3px solid #1a8a5c", paddingLeft: 18,
           }}>
-            Finance is evolving every single day — I&apos;m mapping every shift so you stay ahead of the curve.
+            Documenting every step of building AI-powered finance systems — so you can follow the playbook.
           </p>
 
           <p style={{
             opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(30px)", transition: t(0.5),
-            fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(1rem, 1.8vw, 1.1rem)",
-            color: "#666", maxWidth: 460, lineHeight: 1.7, margin: "0 0 36px",
+            fontFamily: "'DM Sans', sans-serif", fontSize: 14,
+            color: "#999", maxWidth: 460, lineHeight: 1.6, margin: "0 0 36px",
+            letterSpacing: "0.01em",
           }}>
-            Qualified, experienced finance manager on a mission to master AI and build intelligent systems that elevate businesses to new heights. Documenting and sharing a never-ending journey to perfection — so you can follow along.
+            ACCA-qualified. 11+ years in finance. Now building the future.
           </p>
 
           <div style={{ opacity: vis ? 1 : 0, transform: vis ? "none" : "translateY(20px)", transition: t(0.6), display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 56 }}>

@@ -209,14 +209,14 @@ export function getRelatedEntries(entry: JourneyEntry, limit = 3): JourneyEntry[
 // Portfolio data — Day 0, no results yet
 export const PORTFOLIO_DATA: any[] = [];
 
-// Tools data
+// Tools data — reviewSlug links to dedicated review pages (SEO driver)
 export const TOOLS_DATA = [
-  { name: "ChatGPT / Claude", use: "Financial analysis, report writing, data interpretation", status: "Active", icon: "\u{1F916}" },
-  { name: "Microsoft Copilot", use: "Excel automation, PowerPoint generation", status: "Exploring", icon: "\u{1F4CA}" },
-  { name: "Tableau AI", use: "Automated data visualisation & dashboards", status: "Learning", icon: "\u{1F4C8}" },
-  { name: "Dext / Hubdoc", use: "AI-powered receipt & invoice processing", status: "Active", icon: "\u{1F9FE}" },
-  { name: "Cascade.io", use: "AI-first financial planning & modelling", status: "Researching", icon: "\u{1F4A1}" },
-  { name: "Trullion", use: "AI for audit & lease accounting", status: "Watchlist", icon: "\u{1F50D}" },
+  { name: "ChatGPT / Claude", use: "Financial analysis, report writing, data interpretation", status: "Active", icon: "\u{1F916}", reviewSlug: "how-i-use-claude-for-finance" },
+  { name: "Microsoft Copilot", use: "Excel automation, PowerPoint generation", status: "Exploring", icon: "\u{1F4CA}", reviewSlug: null },
+  { name: "Tableau AI", use: "Automated data visualisation & dashboards", status: "Learning", icon: "\u{1F4C8}", reviewSlug: null },
+  { name: "Dext / Hubdoc", use: "AI-powered receipt & invoice processing", status: "Active", icon: "\u{1F9FE}", reviewSlug: "how-i-use-dext-for-invoice-processing" },
+  { name: "Cascade.io", use: "AI-first financial planning & modelling", status: "Researching", icon: "\u{1F4A1}", reviewSlug: null },
+  { name: "Trullion", use: "AI for audit & lease accounting", status: "Watchlist", icon: "\u{1F50D}", reviewSlug: null },
 ];
 
 // Site-wide SEO constants

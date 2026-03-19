@@ -52,8 +52,9 @@ export function SubscribeSection() {
           </>
         ) : (
           <>
-            <h2 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", fontWeight: 800, color: "#fff", margin: "0 0 12px", letterSpacing: "-0.02em", position: "relative" }}>Get Every Day Delivered</h2>
-            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: "rgba(255,255,255,0.75)", lineHeight: 1.7, maxWidth: 420, margin: "0 auto 32px", position: "relative" }}>Daily entries, tool discoveries, and hard-won lessons — straight to your inbox. Free, always.</p>
+            <h2 style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", fontWeight: 800, color: "#fff", margin: "0 0 12px", letterSpacing: "-0.02em", position: "relative" }}>The Weekly AI Finance Roundup</h2>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: "rgba(255,255,255,0.75)", lineHeight: 1.7, maxWidth: 440, margin: "0 auto 10px", position: "relative" }}>One email per week — the best lessons, tool discoveries, and breakthroughs from the journey. Curated, not cluttered.</p>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.45)", lineHeight: 1.6, maxWidth: 360, margin: "0 auto 28px", position: "relative" }}>Join finance professionals following the AI transformation. Free, always.</p>
 
             {status === "error" && (
               <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#ffcccb", marginBottom: 16 }}>

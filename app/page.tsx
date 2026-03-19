@@ -6,6 +6,7 @@ import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
 import { JourneySection } from "@/components/JourneySection";
 import { PortfolioSection } from "@/components/PortfolioSection";
+import { SocialProofBar } from "@/components/SocialProofBar";
 import { AboutSection } from "@/components/AboutSection";
 import { ToolsSection } from "@/components/ToolsSection";
 import { SubscribeSection } from "@/components/SubscribeSection";
@@ -19,6 +20,7 @@ export default function HomePage() {
       <HeroSection />
       <JourneySection />
       <PortfolioSection />
+      <SocialProofBar />
       <AboutSection />
       <ToolsSection />
       <SubscribeSection />
