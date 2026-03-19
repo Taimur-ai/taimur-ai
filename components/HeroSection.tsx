@@ -85,8 +85,8 @@ export function HeroSection() {
 
   return (
     <section id="hero" aria-label="Introduction" style={{
-      minHeight: "100vh", display: "flex", alignItems: "center",
-      padding: "120px 32px 60px", maxWidth: 1200, margin: "0 auto",
+      minHeight: "auto", display: "flex", alignItems: "flex-start",
+      padding: "110px 32px 60px", maxWidth: 1200, margin: "0 auto",
     }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center", width: "100%" }} className="hero-grid">
         <div>
